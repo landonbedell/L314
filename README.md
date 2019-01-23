@@ -5,9 +5,9 @@
 * Clone this repo which contains a prototypical art compiler into a renamed repo (e.g. L201).
 * Clone the GC repo (https://github.com/graffiticode/graffiticode).
 * Populate the postgres database (e.g. 'pgsql < dev/init_data.dump').
-**   `$ psql -c "drop database localgcdb"`
-**   `$ psql -c "create database localgcdb"`
-**   `$ psql -d localgcdb -f tools/initgcdb.sql`
+  * `$ psql -c "drop database localgcdb"`
+  * `$ psql -c "create database localgcdb"`
+  * `$ psql -d localgcdb -f tools/initgcdb.sql`
 * Set environment variable to `DATABASE_URL_LOCAL="postgres://localhost/localgcdb"`.
 * Design a language that allows you to say things that are interesting and beautiful.
 * Edit ./src/lexicon.js to define a vocabulary for that language.
