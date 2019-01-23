@@ -11,7 +11,6 @@
   * `cd graffiticode`
   * `npm install`
 * Create local Postgres database (Install Postgres if needed).
-  * `$ psql -c "drop database localgcdb"`
   * `$ psql -c "create database localgcdb"`
   * `$ psql -d localgcdb -f tools/initgcdb.sql`
   * `$ export DATABASE_URL_LOCAL="postgres://localhost/localgcdb"`.
