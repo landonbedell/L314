@@ -1,8 +1,8 @@
 /*
-   L000 compiler service.
+   L0 compiler service.
    @flow weak
 */
-const langID = "000";
+const langID = "0";
 // SHARED START
 const https = require("https");
 const express = require('express')
