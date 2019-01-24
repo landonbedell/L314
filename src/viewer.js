@@ -14,18 +14,18 @@ window.gcexports.viewer = (function () {
   function capture(el) {
     return null;
   }
-  var Viewer = React.createClass({
+  let Viewer = React.createClass({
     componentDidMount: function() {
       d3.select("#graff-view").append("div").classed("done-rendering", true);
     },
     render: function () {
       // If you have nested components, make sure you send the props down to the
       // owned components.
-      var props = this.props;
-      var obj = props.obj ? [].concat(props.obj) : [];
-      var elts = [];
+      let props = this.props;
+      let obj = props.obj ? [].concat(props.obj) : [];
+      let elts = [];
       obj.forEach(function (d, i) {
-        var style = {};
+        let style = {};
         if (d.style) {
           Object.keys(d.style).forEach(function (k) {
             style[k] = d.style[k];
@@ -43,7 +43,7 @@ window.gcexports.viewer = (function () {
       });
       return (
         elts.length > 0 ? <div>
-          <link rel="stylesheet" href="https://l000.artcompiler.com/style.css" />
+          <link rel="stylesheet" href="/l000/style.css" />
           <div className="L000">
           {elts}
           </div>
