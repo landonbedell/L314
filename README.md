@@ -2,7 +2,7 @@
 
 ### Steps include
 
-* Get and run Graffiticode (https://github.com/graffiticode/graffiticode).
+* Get, build and start the Graffiticode host app (https://github.com/graffiticode/graffiticode).
 * Clone and initialize the starter artcompiler (L0) as a new language (e.g. L1000).
   * `$ git clone git@github.com:graffiticode/L0.git L1000`
   * `$ cd L1000`
