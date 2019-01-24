@@ -43,8 +43,8 @@ window.gcexports.viewer = (function () {
       });
       return (
         elts.length > 0 ? <div>
-          <link rel="stylesheet" href="/l000/style.css" />
-          <div className="L000">
+          <link rel="stylesheet" href="/L0/style.css" />
+          <div className="L0">
           {elts}
           </div>
         </div> : <div/>

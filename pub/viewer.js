@@ -315,7 +315,7 @@ window.gcexports.viewer = function () {
       return elts.length > 0 ? React.createElement(
         "div",
         null,
-        React.createElement("link", { rel: "stylesheet", href: "https://l000.artcompiler.com/style.css" }),
+        React.createElement("link", { rel: "stylesheet", href: "/L0/style.css" }),
         React.createElement(
           "div",
           { className: "L000" },
