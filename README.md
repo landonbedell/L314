@@ -1,15 +1,15 @@
-## Making an Artcompiler
+## Making an artcompiler
 
 ### Steps include
 
 * Clone and initialize the starter artcompiler (L0) as a new language (e.g. L1000).
-  * `git clone git@github.com:graffiticode/L0.git L1000`
-  * `cd L1000`
-  * `npm install`
+  * `$ git clone git@github.com:graffiticode/L0.git L1000`
+  * `$ cd L1000`
+  * `$ npm install`
 * Clone the GC repo.
-  * `git clone git@github.com:graffiticode/graffiticode.git`
-  * `cd graffiticode`
-  * `npm install`
+  * `$ git clone git@github.com:graffiticode/graffiticode.git`
+  * `$ cd graffiticode`
+  * `$ npm install`
 * Create local Postgres database (Install Postgres if needed).
   * `$ psql -c "create database localgcdb"`
   * `$ psql -d localgcdb -f tools/initgcdb.sql`
