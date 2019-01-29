@@ -318,7 +318,7 @@ window.gcexports.viewer = function () {
         React.createElement("link", { rel: "stylesheet", href: "/L0/style.css" }),
         React.createElement(
           "div",
-          { className: "L000" },
+          { className: "L0" },
           elts
         )
       ) : React.createElement("div", null);

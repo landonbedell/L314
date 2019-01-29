@@ -43,7 +43,7 @@ app.get("/compile", function(req, res) {
           let data = body.data;
           data.REFRESH = body.refresh; // Stowaway flag.
           let t0 = new Date;
-          let obj = compiler.compile(code, data, function (err, val) {
+          compiler.compile(code, data, function (err, val) {
             if (err.length) {
               res.send({
                 error: err,
