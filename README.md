@@ -11,6 +11,7 @@
   * `$ cd ../L1000`
   * `$ make`
 * Make sure everything is good.
+  * Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
   * Paste into the code view: `"hello, world!"..`.
   * See "hello, world!" in the form view.
 * Design a language that allows you to say things that are interesting and beautiful.
@@ -22,5 +23,5 @@
 * Start GC as a local server.
   * `$ cd ../graffiticode`
   * `$ make`
-* Visit your local GC server (e.g. http://localhost:3000/lang?id=1000) to test.
+* Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
 * Repeat until you are have done something interesting.
