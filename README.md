@@ -3,12 +3,12 @@
 ### Steps include
 
 * Get, build and start the Graffiticode host app (https://github.com/graffiticode/graffiticode).
-* Clone and initialize the starter artcompiler (L0) as a new language (e.g. L1000).
-  * `$ git clone git@github.com:graffiticode/L0.git L1000`
-  * `$ cd L1000`
+* Clone and initialize the starter artcompiler (L0) as a new language (e.g. L0).
+  * `$ git clone git@github.com:graffiticode/L0.git L0`
+  * `$ cd L0`
   * `$ npm install`
 * Start your compiler as a local service to make sure that all is well.
-  * `$ cd ../L1000`
+  * `$ cd ../L0`
   * `$ make`
 * Make sure everything is good.
   * Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
@@ -24,4 +24,3 @@
   * `$ cd ../graffiticode`
   * `$ make`
 * Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
-* Repeat until you are have done something interesting.
