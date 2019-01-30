@@ -4,7 +4,7 @@
 
 * Get, build and start the Graffiticode host app (https://github.com/graffiticode/graffiticode).
 * Clone and initialize the starter artcompiler (L0) as a new language (e.g. L0).
-  * `$ git clone git@github.com:graffiticode/L0.git L0`
+  * `$ git clone git@github.com:graffiticode/L0.git`
   * `$ cd L0`
   * `$ npm install`
 * Start your compiler as a local service to make sure that all is well.
