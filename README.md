@@ -20,7 +20,5 @@
 * Edit ./src/viewer.js to render that object code in an interesting and beautiful way.
 * Test your changes.
   * `$ make`
-* Start GC as a local server.
-  * `$ cd ../graffiticode`
-  * `$ make`
-* Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
+  * Edit the code in the code view.
+* Repeat to taste.
