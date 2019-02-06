@@ -278,9 +278,6 @@ var d3 = _interopRequireWildcard(_d);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 window.gcexports.viewer = function () {
-  function capture(el) {
-    return null;
-  }
   var Viewer = React.createClass({
     displayName: "Viewer",
 
@@ -325,7 +322,6 @@ window.gcexports.viewer = function () {
     }
   });
   return {
-    capture: capture,
     Viewer: Viewer
   };
 }(); /* Copyright (c) 2017, Art Compiler LLC */

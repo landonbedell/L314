@@ -1,6 +1,5 @@
 /* Copyright (c) 2016, Art Compiler LLC */
 /* @flow */
-
 import {
   assert,
   message,
@@ -10,13 +9,11 @@ import {
   encodeID,
   validate,
 } from "./share.js"
-
 reserveCodeRange(1000, 1999, "compile");
 messages[1001] = "Node ID %1 not found in pool.";
 messages[1002] = "Invalid tag in node with Node ID %1.";
 messages[1003] = "No async callback provided.";
 messages[1004] = "No visitor method defined for '%1'.";
-
 const transform = (function() {
   const table = {
     // v1
@@ -35,7 +32,7 @@ const transform = (function() {
     "VAL" : val,
     "KEY" : key,
     "LEN" : len,
-    "STYLE" : styleV1,
+    "STYLE" : style,
     "CONCAT" : concat,
     "ARG" : arg,
     "IN" : inData,
@@ -393,16 +390,6 @@ const transform = (function() {
     });
   }
   function style(node, options, resume) {
-    visit(node.elts[0], options, function (err1, val1) {
-      visit(node.elts[1], options, function (err2, val2) {
-        resume([].concat(err1).concat(err2), {
-          value: val1,
-          style: val2,
-        });
-      });
-    });
-  }
-  function styleV1(node, options, resume) {
     visit(node.elts[0], options, function (err1, val1) {
       visit(node.elts[1], options, function (err2, val2) {
         resume([].concat(err1).concat(err2), {

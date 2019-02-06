@@ -11,9 +11,6 @@ import {
 import * as React from "react";
 import * as d3 from "d3";
 window.gcexports.viewer = (function () {
-  function capture(el) {
-    return null;
-  }
   let Viewer = React.createClass({
     componentDidMount: function() {
       d3.select("#graff-view").append("div").classed("done-rendering", true);
@@ -52,7 +49,6 @@ window.gcexports.viewer = (function () {
     },
   });
   return {
-    capture: capture,
-    Viewer: Viewer
+    Viewer: Viewer,
   };
 })();
