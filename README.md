@@ -1,17 +1,20 @@
+# L314
+This is a language for building pie charts.
+
 ## Making an artcompiler
 
 ### Steps include
 
 * Get, build and start the Graffiticode host app (https://github.com/graffiticode/graffiticode).
-* Clone and initialize the starter artcompiler (L0) as a new language (e.g. L0).
-  * `$ git clone git@github.com:graffiticode/L0.git`
-  * `$ cd L0`
+* Clone and initialize the starter artcompiler (L314) as a new language (e.g. L314).
+  * `$ git clone git@github.com:graffiticode/L314.git`
+  * `$ cd L314`
   * `$ npm install`
 * Start your compiler as a local service to make sure that all is well.
-  * `$ cd ../L0`
+  * `$ cd ../L314`
   * `$ make`
 * Make sure everything is good.
-  * Visit your local GC server (e.g. http://localhost:3000/lang?id=0) to test.
+  * Visit your local GC server (e.g. http://localhost:3000/lang?id=314) to test.
   * Paste into the code view: `"hello, world!"..`.
   * See "hello, world!" in the form view.
 * Design a language that allows you to say things that are interesting and beautiful.
