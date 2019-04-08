@@ -10,6 +10,7 @@ import {
 } from "./share.js";
 import * as React from "react";
 import * as d3 from "d3";
+import PieChart from "./pie_chart/PieChart"
 window.gcexports.viewer = (function () {
   let Viewer = React.createClass({
     componentDidMount: function() {
@@ -20,32 +21,35 @@ window.gcexports.viewer = (function () {
       // owned components.
       let props = this.props;
       let obj = props.obj ? [].concat(props.obj) : [];
-      let elts = [];
-      obj.forEach(function (d, i) {
-        let style = {};
-        if (d.style) {
-          Object.keys(d.style).forEach(function (k) {
-            style[k] = d.style[k];
-          });
-        }
-        let val = d.value ? d.value : d;
-        if (val instanceof Array) {
-          val = val.join(" ");
-        } else if (typeof val !== "string" &&
-                   typeof val !== "number" &&
-                   typeof val !== "boolean") {
-          val = JSON.stringify(val);
-        }
-        elts.push(<span key={i} style={style}>{val}</span>);
+      let elements = obj.map((d, i) => {
+        switch (d.type) {
+          case "pie":
+            return <PieChart key={i} slices={d.slices}/>
+          default:
+            let style = Object.assign({}, d.style);
+            let val = d.value || d;
+            if (val instanceof Array) {
+              val = val.join(" ");
+            } else if (typeof val !== "string" &&
+                       typeof val !== "number" &&
+                       typeof val !== "boolean") {
+              val = JSON.stringify(val);
+            }
+            return <span key={i} style={style}>{val}</span>;
+        } 
       });
-      return (
-        elts.length > 0 ? <div>
-          <link rel="stylesheet" href="/L0/style.css" />
-          <div className="L0">
-          {elts}
+      if (elements.length > 0) {
+        return (
+          <div>
+            <link rel="stylesheet" href="/L314/style.css" />
+            <div className="L314">
+            {elements}
           </div>
-        </div> : <div/>
-      );
+          </div>
+        );
+      } else {
+        return <div/>;
+      }
     },
   });
   return {

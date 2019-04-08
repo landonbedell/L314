@@ -40,6 +40,8 @@ const transform = (function() {
     "PAREN" : paren,
     "APPLY" : apply,
     "MAP" : map,
+    "SLICE": slice,
+    "PIE": pie
   };
   let nodePool;
   let version;
@@ -396,6 +398,40 @@ const transform = (function() {
           style: val1,
           value: val2,
         });
+      });
+    });
+  }
+  function slice(node, options, resume) {
+    visit(node.elts[0], options, function (err1, name) {
+      visit(node.elts[1], options, function (err2, value) {
+        value = +value;
+        if (isNaN(value)) {
+          err1 = err1.concat(error("Argument must be a number.", node.elts[1]));
+        }
+        visit(node.elts[2], options, function (err3, color) {
+          const colorRegx = RegExp('^#(?:[0-9a-fA-F]{3}){1,2}$');
+          if (!colorRegx.test(color)) {
+            err3 = err3.concat(error("Argument must be a hex color.", node.elts[2]));
+          }
+          resume([].concat(err1, err2, err3), {
+            type: "slice",
+            name: name,
+            value: value,
+            color: color
+          });
+        });
+      });
+    });
+  }
+  function pie(node, options, resume) {
+    visit(node.elts[0], options, function (err1, name) {
+      visit(node.elts[1], options, function (err2, slices) {
+        console.log("SLICES", slices);
+        resume([].concat(err1, err2), {
+          type: "pie",
+          name: name,
+          slices: slices
+        })
       });
     });
   }
