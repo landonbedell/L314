@@ -17,14 +17,12 @@ window.gcexports.viewer = (function () {
       d3.select("#graff-view").append("div").classed("done-rendering", true);
     },
     render: function () {
-      // If you have nested components, make sure you send the props down to the
-      // owned components.
       let props = this.props;
       let obj = props.obj ? [].concat(props.obj) : [];
       let elements = obj.map((d, i) => {
         switch (d.type) {
           case "pie":
-            return <PieChart key={i} slices={d.slices}/>
+            return <PieChart key={i} title={d.name} slices={d.slices}/>
           default:
             let style = Object.assign({}, d.style);
             let val = d.value || d;

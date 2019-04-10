@@ -25,3 +25,13 @@ This is a language for building pie charts.
   * `$ make`
   * Edit the code in the code view.
 * Repeat to taste.
+
+## Example Code
+### Basic Donut Graph
+`
+pie "Test" [
+  slice "A" 7 "#f00", 
+    slice "B" 5 "#00f",
+    slice "C" 10 "#0f0",
+] ..
+`

@@ -16,12 +16,9 @@ var _d3Shape = require('d3-shape');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function PieChart(props) {
-	console.log('making a pie!', props);
 	var width = 400,
 	    height = 300,
-	    radius = Math.min(width, height) / 2;
-
-	var color = (0, _d3Scale.scaleOrdinal)().range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']);
+	    radius = Math.min(width, height) / 2 - 1;
 
 	var arc = (0, _d3Shape.arc)().outerRadius(radius - 10).innerRadius(radius - 70);
 
@@ -31,24 +28,40 @@ function PieChart(props) {
 
 	var data = pie(props.slices);
 
+	var style = {
+		width: "fit-content",
+		textAlign: "center"
+	};
+
 	return _react2.default.createElement(
-		'svg',
-		{ width: width, height: height },
+		'div',
+		{ className: 'PieChart', style: style },
 		_react2.default.createElement(
-			'g',
-			{ transform: 'translate(' + width / 2 + ', ' + height / 2 + ')' },
-			console.log('DATA', data) || data.map(function (d) {
-				return _react2.default.createElement(
-					'g',
-					{ className: 'arc', key: 'a' + d.data.name },
-					_react2.default.createElement('path', { d: arc(d), fill: d.data.color }),
-					_react2.default.createElement(
-						'text',
-						{ transform: 'translate(' + arc.centroid(d) + ')', dy: '.35em' },
-						d.data.name
-					)
-				);
-			})
+			'h3',
+			{ className: 'title' },
+			' ',
+			props.title,
+			' '
+		),
+		_react2.default.createElement(
+			'svg',
+			{ width: width, height: height },
+			_react2.default.createElement(
+				'g',
+				{ transform: 'translate(' + width / 2 + ', ' + height / 2 + ')' },
+				console.log('DATA', data) || data.map(function (d) {
+					return _react2.default.createElement(
+						'g',
+						{ className: 'arc', key: 'a' + d.data.name },
+						_react2.default.createElement('path', { d: arc(d), fill: d.data.color }),
+						_react2.default.createElement(
+							'text',
+							{ transform: 'translate(' + arc.centroid(d) + ')', dy: '.35em' },
+							d.data.name
+						)
+					);
+				})
+			)
 		)
 	);
 }
@@ -348,14 +361,12 @@ window.gcexports.viewer = function () {
       d3.select("#graff-view").append("div").classed("done-rendering", true);
     },
     render: function render() {
-      // If you have nested components, make sure you send the props down to the
-      // owned components.
       var props = this.props;
       var obj = props.obj ? [].concat(props.obj) : [];
       var elements = obj.map(function (d, i) {
         switch (d.type) {
           case "pie":
-            return React.createElement(_PieChart2.default, { key: i, slices: d.slices });
+            return React.createElement(_PieChart2.default, { key: i, title: d.name, slices: d.slices });
           default:
             var style = Object.assign({}, d.style);
             var val = d.value || d;
