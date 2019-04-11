@@ -16,11 +16,13 @@ var _d3Shape = require('d3-shape');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function PieChart(props) {
-	var width = 400,
-	    height = 300,
-	    radius = Math.min(width, height) / 2 - 1;
+	var width = props.width,
+	    height = props.height,
+	    donut = props.donut;
 
-	var arc = (0, _d3Shape.arc)().outerRadius(radius - 10).innerRadius(radius - 70);
+	var radius = Math.min(width, height) / 2 - 1;
+
+	var arc = (0, _d3Shape.arc)().outerRadius(radius - 10).innerRadius(donut ? radius - 70 : 0);
 
 	var pie = (0, _d3Shape.pie)().sort(null).value(function (d) {
 		return d.value;
@@ -334,6 +336,9 @@ exports.validate = validate;
 },{"buffer":6,"hashids":48,"https":49}],3:[function(require,module,exports){
 "use strict";
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /* Copyright (c) 2017, Art Compiler LLC */
+
+
 var _share = require("./share.js");
 
 var _react = require("react");
@@ -352,7 +357,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-/* Copyright (c) 2017, Art Compiler LLC */
 window.gcexports.viewer = function () {
   var Viewer = React.createClass({
     displayName: "Viewer",
@@ -366,13 +370,20 @@ window.gcexports.viewer = function () {
       var elements = obj.map(function (d, i) {
         switch (d.type) {
           case "pie":
-            return React.createElement(_PieChart2.default, { key: i, title: d.name, slices: d.slices });
+            return React.createElement(_PieChart2.default, {
+              key: i,
+              title: d.name,
+              slices: d.slices,
+              width: d.width,
+              height: d.height,
+              donut: d.donut
+            });
           default:
             var style = Object.assign({}, d.style);
             var val = d.value || d;
             if (val instanceof Array) {
               val = val.join(" ");
-            } else if (typeof val !== "string" && typeof val !== "number" && typeof val !== "boolean") {
+            } else if (!["string", "number", "boolean"].includes(typeof val === "undefined" ? "undefined" : _typeof(val))) {
               val = JSON.stringify(val);
             }
             return React.createElement(

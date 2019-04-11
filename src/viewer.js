@@ -22,15 +22,20 @@ window.gcexports.viewer = (function () {
       let elements = obj.map((d, i) => {
         switch (d.type) {
           case "pie":
-            return <PieChart key={i} title={d.name} slices={d.slices}/>
+            return <PieChart 
+              key={i} 
+              title={d.name} 
+              slices={d.slices} 
+              width={d.width} 
+              height={d.height}
+              donut={d.donut}
+            />
           default:
             let style = Object.assign({}, d.style);
             let val = d.value || d;
             if (val instanceof Array) {
               val = val.join(" ");
-            } else if (typeof val !== "string" &&
-                       typeof val !== "number" &&
-                       typeof val !== "boolean") {
+            } else if (!["string", "number", "boolean"].includes(typeof val)) {
               val = JSON.stringify(val);
             }
             return <span key={i} style={style}>{val}</span>;

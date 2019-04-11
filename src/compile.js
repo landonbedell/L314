@@ -426,12 +426,27 @@ const transform = (function() {
   function pie(node, options, resume) {
     visit(node.elts[0], options, function (err1, name) {
       visit(node.elts[1], options, function (err2, slices) {
-        console.log("SLICES", slices);
-        resume([].concat(err1, err2), {
-          type: "pie",
-          name: name,
-          slices: slices
-        })
+        visit(node.elts[2], options, function (err3, pieOptions) {
+          let {height=300, width=400, donut=false} = pieOptions;
+          console.log('pie options', height, width, donut, pieOptions);
+          height = +height;
+          if (isNaN(height) && height > 100) {
+            err3 = err3.concat(error("Height must be a number greater than 100.", node.elts[3]));
+          }
+          width = +width;
+          if (isNaN(width) && width > 100) {
+            err3 = err3.concat(error("Width must be a number greater than 100.", node.elts[3]));
+          }
+          donut = Boolean(donut);
+          resume([].concat(err1, err2, err3), {
+            type: "pie",
+            name: name,
+            slices: slices,
+            height: height,
+            width: width,
+            donut: donut
+          });
+        });
       });
     });
   }

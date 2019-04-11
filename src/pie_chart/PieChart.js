@@ -3,13 +3,12 @@ import { scaleOrdinal } from 'd3-scale';
 import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
 
 function PieChart(props) {
-	const width = 400,
-  		height = 300,
-  		radius = Math.min(width, height) / 2 - 1;
+	const {width, height, donut} = props;
+  	const radius = Math.min(width, height) / 2 - 1;
 
 	const arc = d3Arc()
 	  	.outerRadius(radius - 10)
-	  	.innerRadius(radius - 70);
+	  	.innerRadius(donut ? radius - 70: 0);
 
 	const pie = d3Pie()
 	  	.sort(null)
