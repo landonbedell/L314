@@ -33,5 +33,5 @@ pie "Test" [
   slice "A" 7 "#f00", 
     slice "B" 5 "#00f",
     slice "C" 10 "#0f0",
-] ..
+] {width:600, height:400, donut:true}..
 `
